@@ -1,0 +1,26 @@
+Topic: Allowing Container communication
+
+Step1 : Check the networks
+docker network ls 
+
+Step 2:create a user-defined network 
+docker network create my_network
+
+Step 3: Create two containers (In seperate shells)
+docker run --name container1 -d image1
+docker run --name container2 -d image1
+
+Step 4: Connect the two containers
+docker network connect my_network container1
+docker network connect my_network container2
+
+Step 5: Inspect the network to see the connected networks
+docker network inspect my_network 
+
+Step 6: Install iputils-pind inside both the containers
+use docker exec -it .../bin/bash
+apt-get update -y 
+apt-get install iputils-ping
+
+Step 7: Enter exec mode and ping container2 from container1
+docker exec -it container1 ping container2

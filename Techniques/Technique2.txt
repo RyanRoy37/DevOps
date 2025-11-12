@@ -1,0 +1,27 @@
+Topic: Running containers as deamons
+
+Step 1 L Create a folder tech_2
+Step 2: Move into the folder
+Step 3: Create a dockerfile and add the dummy code
+FROM alpine:latest
+RUN apk add --update redis
+CMD["redis-server"]
+
+Step 4: Build the dockerfile
+docker build -t tec_2 .
+
+Step 4: Check images
+docker images
+
+Step 5: Run the image 
+docker run -p 80:80 tec_2 
+
+Step 5: Observe the prompt being withheld by the process, press ctrl_c to exit
+
+Step 6: Re-run the image in detached mode
+docker run -d tec_2 
+
+Step 7: Observe how the prompt exited the container 
+
+Step 8: Check the process state of Docker 
+docker ps 

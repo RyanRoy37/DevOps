@@ -1,0 +1,29 @@
+Topic: The "SAVE GAME" Approach
+
+Step 1: List all docker images 
+docker images 
+
+Step 2: View the containers 
+docker container ls 
+
+Step 3: Run any image in the interactive mode 
+docker run -it ubuntu:23.10 bin/bash 
+
+Step 4: Update the container inside bash
+apt-get update 
+
+Step 5: Install any tool 
+apt-get install iputils 
+iputils -v 
+
+Step 6: Exit the container 
+exit 
+
+Step 7: Display the list of runnign containers 
+docker ps 
+
+Step 8: Commit the container with id and provide a name 
+docker commit <id> <name>
+
+Step 9: Verify
+docker images 

@@ -1,0 +1,4 @@
+Topic: Setting up a local Dokcer registry
+
+Step 1L To create and make the registry available
+docker run -d -p 5000:5000 -v $HOME/registry registry:2

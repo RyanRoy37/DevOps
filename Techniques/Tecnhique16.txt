@@ -1,0 +1,6 @@
+Topic: Docker tagging 
+Step 1: List the images 
+docker images 
+
+Step 2: Specify a name to the image
+docker tag <id> <name>

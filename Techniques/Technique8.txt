@@ -1,0 +1,26 @@
+Topic: Linking containers for port isolation
+
+Step 1 : Check the networks
+docker network ls 
+
+Step 2: Pull images of apache and mysql
+docker pull apache 
+docker pull mysql 
+
+Step 3: Run apache and mysql images by specifying a port number
+docker run -d -p 3306:3306 --name sql -e MYSQL_ROOT_PASSWORD=pswd mysql
+docker run -d -p  80:80 --name apache --link sql:msql apache 
+
+Step 4: check the docker process state
+docker ps 
+
+Step 5: Check the network of both the containers 
+docker inspect mysql 
+docker inspect apache 
+
+Step 6: Enter bash of apache 
+docker exec -it apache bash 
+
+Step 7: Ping mysql from apache 
+(install ip-utils..)
+ping mysql

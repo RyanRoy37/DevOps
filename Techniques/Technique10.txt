@@ -1,0 +1,7 @@
+Topic: Finding and Running a docker images
+
+Step 1: Use the terminal to search for a docker images
+docker search node 
+
+Step 2 : Pull the image 
+docker pull node 

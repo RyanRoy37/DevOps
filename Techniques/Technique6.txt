@@ -1,0 +1,13 @@
+Topic: Using ports to connect to containers
+
+Step 1: Pull some image from from the repo(docker hub)
+docker pull wordpress
+docker images
+
+Step 2: Map the port 10001 to port 80
+docker run -p 10001:80 wordpress
+(80 is the port where wordpress by default listens to)
+
+Step 3: Verify by navigating to http://localhost:10001 using a browser
+You can see the wordpress guide page
+

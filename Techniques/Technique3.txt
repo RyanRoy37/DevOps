@@ -1,0 +1,18 @@
+Topic: Moving Docker to a different partition
+By deafult docker stores everything in /var/lib/docker
+
+Step 1: Stop the docker service
+suod systemctl stop docker 
+
+Step 2: Move the contens of Docker to a different locatin
+sudo dockerd --date-root /home/1rv24mc045_ryan/mydocker
+--data-root specifies where docker should store its internal files 
+The above command takes over the terminal, use ctrl+c to exit
+
+In another temrinal,
+Step 3: Start the docker service
+sudo systemctl start docker.service (or just docker)
+
+Step 4: Check the folder creation and contents by navigating into the directory
+sudo sudo
+cd /hone/1rv24mc045_ryan/mydocker

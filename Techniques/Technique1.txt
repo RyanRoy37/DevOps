@@ -1,0 +1,33 @@
+Topic: Open you docker daemon to the world
+
+Step 1 : Check the status of docker
+sudo sytemctl status docker
+
+Step 2 : Open the systemd file of docker
+sudo nano /lib/systemd/system/docker.service
+The above is the service definition file, it defines how docker deamon starts i.e what commands, arguments etc.
+
+
+Step 3: Comment the containerd.sock code 
+sudo cat .......(as above)
+The above commented code tells docker to communicate via the Unix socket. It only lets local communication.
+
+Step 4 : Add the code to the systemd file
+"ExecStart=/usr/bin/dockerd -H=fd://tcp://0.0.0.0:2375
+The above code tell docker to listen over TCP on port 2375
+
+Step 5: Reload the daemon and restart docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+Step 6: Check IP of the host
+ifconfig
+
+Step 7: Open http://ip:2375/images/json in browser to view the docker images.
+
+The Docker API on tcp://0.0.0.0:2375 is completely unauthenticated and unencrypted by default.
+Anyone with access to that port can:
+Run arbitrary containers (POST /containers/create)
+Remove all images (DELETE /images)
+Access your filesystem through container mounts
+Essentially gain root-level control over your host

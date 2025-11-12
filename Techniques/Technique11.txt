@@ -1,0 +1,28 @@
+Topic : From VM To Container
+
+Run a container -> View the container -> Export the container -> Import the container -> List all the images -> Load and view the images
+
+To convert a VM to docker
+Step 1: Create nginx container
+sudo docker run -d -p 90:90 --name nginx nginx 
+
+Step 2: Display running container 
+docker ps 
+
+Step 3: Export the container with its name or id 
+docker export nginx > nginx.tar 
+
+Step 4 : Import the created file as a new image 
+docker import -mynginx < nginx.tar
+
+Step 5: List a;; the images 
+docker images 
+
+Step 6: List all files in the current location 
+ls -l 
+
+Step 7: Load docker image into your system 
+docker run --name container_nginx -d mynginx:latest nginx -g 'deamon off'
+
+Step 8: dispaying running containers 
+docker ps

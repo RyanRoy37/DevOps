@@ -1,0 +1,12 @@
+Topic: Using socat to monitor Docker API traffic
+
+Step1 : Run socat Using
+sudo socat -v UNIX-LISTEN:/tmp/dockerapi.sock,fork UNIX-CONNECT:/var/run/docker.sock &
+socat- a network/IPC relay tool
+-v - verbose flag writes what it reads and writes to STDERR(terminal)
+We create a unix socket that listens on dockerapi.sock and connect to run/docker.sock  which is the default socket.
+& runs the command in the background
+
+Step 2: To see the rrquest and response 
+docker -H unix:tmp/dockerapi.sock ps -a 
+-H(Host) tells the docker CLI to use the UNIX socker at dockerapi
