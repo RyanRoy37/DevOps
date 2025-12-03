@@ -1,0 +1,20 @@
+Topic : Sharing images on the DockerHub 
+
+Step 1: Sign up in docker hub repository
+
+Step 2L List all the images in local repository
+docker imahges 
+
+Step3 : Pull an image 
+docker pull node 
+
+Step 4: Make neccessary changes by geting into interactive mode 
+docker exec..... bin/bash 
+apt-get update 
+apt-get install ...
+
+Step 5: Tag the docker image 
+docker tag node:version_  <username>/node:version_1 
+
+step 6: Push to docker hub 
+docker push <username>/node:version_1

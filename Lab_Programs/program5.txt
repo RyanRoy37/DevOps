@@ -1,0 +1,29 @@
+docker --version
+docker compose version 
+
+#Dockerfile
+FROM jenkins/jenkins:lts
+USER root
+RUN apt-get update && RUN apt-get install -y docker.io
+USER jenkins 
+
+
+#docker-compose.yml
+version:'3.8'
+services:
+    jenkins:
+    build: .
+    container_name:jenkins-ci 
+    ports:
+        - "8080:8080"
+        - "50000:50000"
+    volumes:
+        - jenkins_home:/var/jenkins_home
+        - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+    jenkins_home
+
+
+docker compose up -d 
+
+remove images

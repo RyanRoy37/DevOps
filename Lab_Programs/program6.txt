@@ -1,0 +1,21 @@
+new repo
+sttings-dev settings- pat-fine grained token
+tock write:packages and read:packages
+
+#Dockerfile
+FROm alpine
+CMD ["echo", "yello"]
+
+docker build -d program-6 . 
+
+docker tag program-6 jryan/program-6:latest
+docker login -u jryan 
+docker push jryan/program-6:latest 
+
+docker tag program-6 ghcr.io/RyanRoy37/program-6:latest
+echo PAT | docker login ghcr.io -u /RyanRoy37/ --password=stdin 
+docker push ghcr.io/RyanRoy37/program-6:latest 
+
+git remote add origin/repo.git 
+git add 
+blah blah blah
