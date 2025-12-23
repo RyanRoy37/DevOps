@@ -1,0 +1,15 @@
+Topic: Inteligent cache -bustin using Build-Args
+
+Step 1 : Create a dockerfile
+
+Step 2: Add a custom cache invalidation
+
+From debian
+RUN apt-get update && apt-get -y update
+ARG CACHEBUST=1
+RUN echo ["welcome"]
+
+Step 3: Build the image with cache bust as a paramter to set a different value making all layers be rebuilt
+sudo docker build -t ...--build-arg CACHEBUST=$(date +%s) .
+
+What we basically do is we create a variable at a point in the build, whose value we change during the build process, because of which docker detects a change, and rebuilds subsequent layers rather than using the cache.

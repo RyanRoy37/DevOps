@@ -1,0 +1,16 @@
+Topic: Intelligent cache busting using add directive
+
+Step 1: Create a docker file 
+FROM debian..
+.....
+
+Step 2: insert the ADD command for a online file
+ADD online_url /location
+
+Step 3: Build the image
+docker build .
+
+Step 4 : List the images 
+
+The above is partially true, when you use ADD with a local file, docker calculates the checksum and if the file contents change, docker invalidates cache for the next build, 
+but for online url , docker calculates checksum of the url, not the contents of the url, therefore the above technique is outdated, lol.

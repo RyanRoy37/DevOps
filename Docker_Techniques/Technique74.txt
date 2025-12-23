@@ -1,0 +1,17 @@
+Topic: Informing your containers with etcd 
+
+Step 1: Run the etcd container with 'ALLOW_NONE_AUTHENTICATION=yes' 
+docker run -d \
+-p 2379:2379 -p 2380:2380 \
+--name etcd \
+-e ALLOW_NONE_AUTHENTICATION=yes \
+bitnami/etcd 
+
+Step 2: Verify running processes 
+docker ps 
+
+Step 3: Store data using put 
+docker exec etcd etcdctl put /my_name ryan 
+
+Step 4: Retrieve data using etcd (get)
+docker exec etcd etcdctl get /my_name 

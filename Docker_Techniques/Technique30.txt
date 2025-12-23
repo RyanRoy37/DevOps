@@ -1,0 +1,13 @@
+Topic: Inspecting containers
+
+Step 1: Run a container 
+docker run -it <image>
+
+Step 2: Open another terminal and retreive the container ID 
+docker container ls -a 
+
+Step 3: Inspect the container 
+docker inspect --size <container-id> 
+inspect - shows low level JSOn information about the container including 
+Network settinf, mount points, env variables etc
+--size - additionally shows size of writable layer and total filesystem size 

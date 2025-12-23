@@ -1,0 +1,44 @@
+Running a single node kubernetes cluster using minikube 
+
+Step 1: Min requirements
+2 CPUs or more 
+2GB of free memory 
+20GB of free disk space 
+Internet
+Docker 
+
+Step 2: Install minikube 
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+
+#Installs minikube on the system 
+
+Step 3: Start a cluster using the docker driver 
+minikube start --driver=docker 
+
+Step 4: Make docker the default driver for minikube 
+minikube config set driver docker 
+
+Step 5: Start a Kubernetes cluster with minikube 
+minikube start 
+
+Step 6: Install the kubernetes client 
+apt-get update
+apt-get install -y apt-transport-https ca-certificates curl 
+
+Step 7: DOwnload the public signing key for kubernetes pakcage repositories 
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor \
+-o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+
+STep 8: Add the appropriate Kubernetes apt repository 
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] \
+https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+ 
+Step 9: Update apt package index and install kubectl 
+aptget update 
+apt-get install -y kubectl 
+
+Step 10: Display cluster information 
+kubectl cluster-info 
+

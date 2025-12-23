@@ -1,0 +1,22 @@
+Topic: Settin the right time zone in the containers
+
+Step 1L Create a dockerfile with an environment
+
+FROM ubuntu
+ENV TZ=Europe/London
+ENV DEBIAN_FRONTEND=noninteractive #this command ensures the shell is set to noninteractive during package installtion because the pckage tzdata, blocks the prompt for a user input.
+RUN apt-get update && apt-get install -y tzdata
+
+
+Step 2: Build the docker file
+docker build .
+
+Step 3: Run the container, explicitly specifying the TZ
+docker run -e TZ=Europe/London -it sample:1.0 
+Runtime variables like the above override environment variables
+
+Step 4: date 
+to check the date
+
+Step 5: Exit the container 
+exit 

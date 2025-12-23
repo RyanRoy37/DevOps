@@ -1,0 +1,18 @@
+Topic: Using docker machine to provision Docker Hosts 
+
+Step 1: Install docker machine either from the official github repo or using apt-get Install
+sudo apt-get install docker-machine 
+
+Step 2: Check the version 
+docker-machine --version 
+
+Step 3: List the docker hosts 
+docker-machine ls 
+
+Step 4: Create a docker VM using Create
+docker-machine create <vm>
+
+Step 5: Open virtualbox to check created VM (by defualt the driver is of the VirtualBox) 
+ Step 6: Verify the docker host 
+ docker-machine ls 
+ 

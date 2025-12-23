@@ -1,0 +1,11 @@
+Topic: Cleanly killing containers 
+
+Step 1: docker run -it <image>
+
+Step 2: Open another terminal and retrieve the container id
+docker container ls -a 
+
+Step 3: Kill the container 
+docker kill <container-id> 
+
+kill - sends a SIGKILL, that forcefull terminates a running container.

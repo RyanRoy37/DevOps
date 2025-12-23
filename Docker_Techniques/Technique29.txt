@@ -1,0 +1,25 @@
+Topic: Running GUIs within Docker 
+
+
+Pre-step: Grant access to local system's display server
+xhost+ local:docker 
+
+Step 1: Create a docker file with an environment
+FROM ubuntu
+ENV DEBIAN_FRONTEND= noninteractive
+RUN apt-get update
+RUN apt-get install nautilus -y 
+CMD ['nautilus']
+
+Step 2: Build the docker image 
+docker build . 
+
+Step 3: Run the GUI container 
+sudo docker run -it --rm \
+-e Display=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+nautilus-ubuntu:latest. 
+
+--rm -removes container after exit
+-e DISPLAY=$DISPLAY - passes host display environment to container 
+-v /tmp/.X11-unix: /tmp/.X11-unix - mounts X11 socket for GUI communication 

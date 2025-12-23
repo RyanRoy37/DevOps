@@ -15,7 +15,7 @@ docker export nginx > nginx.tar
 Step 4 : Import the created file as a new image 
 docker import -mynginx < nginx.tar
 
-Step 5: List a;; the images 
+Step 5: List all the images 
 docker images 
 
 Step 6: List all files in the current location 
